@@ -7,7 +7,6 @@ This project skeleton was created to help people get started with creating their
 
 - [Rollup](https://github.com/rollup/rollup)
 - [Sass](https://sass-lang.com/)
-- [TypeScript](https://www.typescriptlang.org/)
 
 It also features:
 
@@ -59,16 +58,15 @@ This will generate:
 ```
 /src
   /YourComponentName
-    YourComponentName.tsx
-    YourComponentName.stories.tsx
-    YourComponentName.test.tsx
-    YourComponentName.types.ts
+    YourComponentName.js
+    YourComponentName.stories.js
+    YourComponentName.test.js
     YourComponentName.scss
 ```
 
 The default templates for each file can be modified under `util/templates`.
 
-Don't forget to add the component to your `index.ts` exports if you want the library to export the component!
+Don't forget to add the component to your `index.js` exports if you want the library to export the component!
 
 ### Installing Component Library Locally
 
@@ -130,7 +128,7 @@ Let's say you created a public NPM package called `harvey-component-library` wit
 
 Usage of the component (after the library installed as a dependency into another project) will be:
 
-```TSX
+```JSX
 import React from "react";
 import { TestComponent } from "harvey-component-library";
 
@@ -227,7 +225,7 @@ plugins:[
 
 You can then import and render images in your components like:
 
-```tsx
+```jsx
 import logo from "./rollup.png";
 
 export const ImageComponent = () => (
@@ -259,7 +257,7 @@ plugins:[
 
 You can then import and use JSON as ES6 Modules:
 
-```tsx
+```jsx
 import data from "./some-data.json";
 
 export const JsonDataComponent = () => <div>{data.description}</div>;
