@@ -7,6 +7,5 @@
       }
     ],
     "@babel/react"
-  ],
-  "ignore": ["node_modules/**"]
+  ]
 }

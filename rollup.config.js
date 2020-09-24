@@ -1,41 +1,42 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import postcss from 'rollup-plugin-postcss'
-import copy from 'rollup-plugin-copy'
 import babel from 'rollup-plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+import copy from 'rollup-plugin-copy'
+import postcss from 'rollup-plugin-postcss'
 
 export default {
-  input: ['src/index.js', 'src/TestComponent/index.js'],
+  input: {
+    TestComponent: 'src/TestComponent/TestComponent.js',
+    TestComponent2: 'src/TestComponent2/TestComponent2.js',
+    index: 'src/index.js',
+  }, // src/index.js for those who want to import whole library
   output: [
     {
       dir: 'build',
       format: 'cjs',
       sourcemap: true,
+      exports: 'auto',
     },
   ],
-  preserveModules: true, // Important if we want to code split
   plugins: [
     peerDepsExternal(),
     resolve(),
-    commonjs(),
+    babel({
+      exclude: 'node_modules/**',
+    }),
     postcss(),
+    commonjs(),
+    terser(), // minifies generated bundles
     copy({
       targets: [
         {
-          src: 'src/variables.scss',
+          src: 'src/common.scss',
           dest: 'build',
-          rename: 'variables.scss',
-        },
-        {
-          src: 'src/typography.scss',
-          dest: 'build',
-          rename: 'typography.scss',
+          rename: 'common.scss',
         },
       ],
-    }),
-    babel({
-      exclude: 'node_modules/**',
     }),
   ],
 }

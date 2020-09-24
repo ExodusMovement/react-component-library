@@ -1,0 +1,13 @@
+// Generated with util/create-component.js
+@import '../common.scss';
+.foo-bar {
+  color: yellow;
+
+  .ff {
+    pointer-events: none;
+  }
+
+  &__nested {
+    color: red;
+  }
+}

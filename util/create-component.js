@@ -1,7 +1,6 @@
 require('colors')
 const fs = require('fs')
 const templates = require('./templates')
-const indexComponent = require('./templates/index-component.js')
 
 const componentName = process.argv[2]
 
@@ -27,6 +26,5 @@ generatedTemplates.forEach((template) => {
   fs.writeFileSync(`${componentDirectory}/${componentName}${template.extension}`, template.content)
 })
 
-fs.writeFileSync(`${componentDirectory}/index.js`, indexComponent(componentName).content)
 
 console.log('Successfully created component under: ' + componentDirectory.green)
